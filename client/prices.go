@@ -6,7 +6,7 @@ import (
 	"net/url"
 	"strings"
 
-	"github.com/QuantFu-Inc/coinbase-adv/model"
+	"github.com/mcwarner5/coinbase-adv/model"
 )
 
 type Quote struct {

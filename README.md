@@ -16,10 +16,10 @@ This is a work in progress. You are responsible for any use. APIs may change. Yo
 #
 ### Install
 
- `go get github.com/QuantFu-Inc/coinbase-adv@v0.2.2-beta`
+ `go get github.com/mcwarner5/coinbase-adv@v0.2.2-beta`
 
 ### Import library
-`import "github.com/QuantFu-Inc/coinbase-adv/client" `
+`import "github.com/mcwarner5/coinbase-adv/client" `
 
 
 #

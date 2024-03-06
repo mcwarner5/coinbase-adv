@@ -6,7 +6,7 @@ import (
 	"os"
 	"testing"
 
-	"github.com/QuantFu-Inc/coinbase-adv/client"
+	"github.com/mcwarner5/coinbase-adv/client"
 )
 
 func Test_GetAccount(t *testing.T) {

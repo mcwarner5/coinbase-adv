@@ -2,11 +2,12 @@ package test
 
 import (
 	"fmt"
-	"github.com/QuantFu-Inc/coinbase-adv/client"
 	"io"
 	"net/http"
 	"os"
 	"testing"
+
+	"github.com/mcwarner5/coinbase-adv/client"
 )
 
 func Test_API(t *testing.T) {

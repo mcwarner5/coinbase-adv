@@ -7,8 +7,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/QuantFu-Inc/coinbase-adv/client"
-	"github.com/QuantFu-Inc/coinbase-adv/model"
+	"github.com/mcwarner5/coinbase-adv/client"
+	"github.com/mcwarner5/coinbase-adv/model"
 )
 
 func Test_CreateMarketOrderBuy(t *testing.T) {

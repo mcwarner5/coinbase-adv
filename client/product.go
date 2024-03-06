@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"net/url"
 
-	"github.com/QuantFu-Inc/coinbase-adv/model"
+	"github.com/mcwarner5/coinbase-adv/model"
 )
 
 // GetProduct -- get product

@@ -5,7 +5,7 @@ import (
 	"net/url"
 	"time"
 
-	"github.com/QuantFu-Inc/coinbase-adv/model"
+	"github.com/mcwarner5/coinbase-adv/model"
 )
 
 type ListFillsParams struct {
