@@ -23,9 +23,14 @@ const (
 	SPOT ProductType = "SPOT"
 )
 
+const (
+	FUTURE ProductType = "FUTURE"
+)
+
 // All allowed values of ProductType enum
 var AllowedProductTypeEnumValues = []ProductType{
 	"SPOT",
+	"FUTURE",
 }
 
 func (v *ProductType) UnmarshalJSON(src []byte) error {

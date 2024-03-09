@@ -21,6 +21,7 @@ type CoinbaseClient interface {
 	GetQuote(ctx context.Context, currency string) (*Quote, error)
 	GetExchangeRate(ctx context.Context, currency string) (*model.GetExchangeRateResponseData, error)
 	GetProduct(ctx context.Context, productId string) (*model.GetProductResponse, error)
+	ListProducts(ctx context.Context, p *ListProductsParams) (*model.ListProductsResponse, error)
 
 	// utility funcs
 	CheckAuthentication(req *http.Request, body []byte)
