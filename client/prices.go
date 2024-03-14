@@ -6,7 +6,7 @@ import (
 	"net/url"
 	"strings"
 
-	"github.com/mcwarner5/coinbase-adv/model"
+	"github.com/mcwarner5/BlockBot8000/libraries/coinbase-adv/model"
 )
 
 type Quote struct {

@@ -7,8 +7,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/mcwarner5/coinbase-adv/client"
-	"github.com/mcwarner5/coinbase-adv/model"
+	"github.com/mcwarner5/BlockBot8000/libraries/coinbase-adv/client"
+	"github.com/mcwarner5/BlockBot8000/libraries/coinbase-adv/model"
 )
 
 func Test_ListOrders(t *testing.T) {

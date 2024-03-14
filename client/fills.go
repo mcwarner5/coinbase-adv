@@ -5,7 +5,7 @@ import (
 	"net/url"
 	"time"
 
-	"github.com/mcwarner5/coinbase-adv/model"
+	"github.com/mcwarner5/BlockBot8000/libraries/coinbase-adv/model"
 )
 
 type ListFillsParams struct {

@@ -4,7 +4,7 @@ import (
 	"context"
 	"net/http"
 
-	"github.com/mcwarner5/coinbase-adv/model"
+	"github.com/mcwarner5/BlockBot8000/libraries/coinbase-adv/model"
 )
 
 type CoinbaseClient interface {
@@ -22,6 +22,8 @@ type CoinbaseClient interface {
 	GetExchangeRate(ctx context.Context, currency string) (*model.GetExchangeRateResponseData, error)
 	GetProduct(ctx context.Context, productId string) (*model.GetProductResponse, error)
 	ListProducts(ctx context.Context, p *ListProductsParams) (*model.ListProductsResponse, error)
+	ListProductsTickerHistory(ctx context.Context, p *ListProductsTickerHistoryParams) (*model.ListProductsTickerResponse, error)
+	GetProductCandles(ctx context.Context, p *ListProductsCandlesParams) (*model.ListProductsCandlestickResponse, error)
 
 	// utility funcs
 	CheckAuthentication(req *http.Request, body []byte)

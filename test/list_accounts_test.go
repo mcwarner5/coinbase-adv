@@ -6,7 +6,7 @@ import (
 	"os"
 	"testing"
 
-	"github.com/mcwarner5/coinbase-adv/client"
+	"github.com/mcwarner5/BlockBot8000/libraries/coinbase-adv/client"
 )
 
 func Test_ListAccounts(t *testing.T) {

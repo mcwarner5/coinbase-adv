@@ -16,13 +16,13 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/mcwarner5/coinbase-adv/internal"
+	"github.com/mcwarner5/BlockBot8000/libraries/coinbase-adv/internal"
 )
 
 const (
 	CoinbaseAdvV3endpoint = "https://api.coinbase.com/api/v3"
 	CoinbaseAdvV2endpoint = "https://api.coinbase.com/v2"
-	DefaultAPIRateLimit   = 100 // (ms) throttled below
+	DefaultAPIRateLimit   = 10 // (ms) throttled below
 	rateLimitRetryDelay   = time.Second
 )
 
@@ -244,7 +244,6 @@ func (c *Client) DoAndDecode(req *http.Request, dest interface{}) (err error) {
 	//et := time.Now()
 	//df := et.Sub(st)
 	//fmt.Printf("[%d], [%s] [%s] \n", df.Milliseconds(), req.URL.Path, req.URL.RawQuery)
-
 	if res.StatusCode/100 != 2 {
 		return fmt.Errorf(string(body))
 	}

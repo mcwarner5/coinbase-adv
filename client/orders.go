@@ -8,11 +8,12 @@ import (
 	"strings"
 	"time"
 
-	"github.com/mcwarner5/coinbase-adv/model"
+	"github.com/mcwarner5/BlockBot8000/libraries/coinbase-adv/model"
 )
 
 const (
 	DefaultLimit = 50
+	BatchLimit   = 1000
 )
 
 // GetOrder -- get order
@@ -104,7 +105,7 @@ func (c *Client) ListOrders(ctx context.Context, p *ListOrdersParams) (*model.Li
 		if p.Limit > 0 {
 			c.addInt32Param(queryParams, "limit", p.Limit)
 		} else {
-			c.addInt32Param(queryParams, "limit", DefaultLimit)
+			c.addInt32Param(queryParams, "limit", BatchLimit)
 		}
 		c.addStringParam(queryParams, "product_id", p.ProductId)
 		if len(p.OrderStatus) > 0 {
@@ -129,7 +130,7 @@ func (c *Client) ListOrders(ctx context.Context, p *ListOrdersParams) (*model.Li
 		}
 
 	} else {
-		c.addInt32Param(queryParams, "limit", DefaultLimit)
+		c.addInt32Param(queryParams, "limit", BatchLimit)
 	}
 
 	err := c.GetAndDecode(ctx, *u, &response, &headersMap, &queryParams)
