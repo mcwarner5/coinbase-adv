@@ -216,7 +216,7 @@ func (c *Client) DoAndDecode(req *http.Request, dest interface{}) (err error) {
 
 	// retry with 1s backoff if we get rate limited
 	var res *http.Response
-	attempts := 2
+	attempts := 4
 	for attempts > 0 {
 		attempts--
 		res, err = c.httpClient.Do(req)

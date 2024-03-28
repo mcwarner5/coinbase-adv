@@ -46,7 +46,7 @@ p := client.ListAccountsParams{
 
 rsp, err := cln.ListAccounts(&p)
 if err != nil {
-  fmt.Println(err)
+  logrus.Info(err)
   return
 }
 ```

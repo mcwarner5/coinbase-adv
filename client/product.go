@@ -54,8 +54,13 @@ func (c *Client) ListProductsTickerHistory(ctx context.Context, p *ListProductsT
 		c.addInt32Param(queryParams, "limit", BatchLimit)
 	}
 
-	c.addStringParam(queryParams, "start", fmt.Sprint(p.StartTime.Unix()))
-	c.addStringParam(queryParams, "end", fmt.Sprint(p.EndTime.Unix()))
+	if !p.StartTime.IsZero() {
+		c.addStringParam(queryParams, "start", fmt.Sprint(p.StartTime.Unix()))
+	}
+
+	if !p.EndTime.IsZero() {
+		c.addStringParam(queryParams, "end", fmt.Sprint(p.EndTime.Unix()))
+	}
 
 	if p.Cursor != nil {
 		c.addStringParam(queryParams, "cursor", *p.Cursor)
@@ -125,8 +130,8 @@ func (c *Client) ListProducts(ctx context.Context, p *ListProductsParams) (*mode
 
 type ListProductsCandlesParams struct {
 	Product   string
-	StartTime string
-	EndTime   string
+	StartTime time.Time
+	EndTime   time.Time
 	Interval  int
 
 	Cursor *string
@@ -144,8 +149,13 @@ func (c *Client) GetProductCandles(ctx context.Context, p *ListProductsCandlesPa
 		queryParams = make(map[string]string)
 	)
 
-	c.addStringParam(queryParams, "start", p.StartTime)
-	c.addStringParam(queryParams, "end", p.EndTime)
+	if !p.StartTime.IsZero() {
+		c.addStringParam(queryParams, "start", fmt.Sprint(p.StartTime.Unix()))
+	}
+	if !p.EndTime.IsZero() {
+		c.addStringParam(queryParams, "end", fmt.Sprint(p.EndTime.Unix()))
+	}
+
 	var interval_str string
 	if p.Interval > 0 {
 		switch os := p.Interval; os {
@@ -171,6 +181,46 @@ func (c *Client) GetProductCandles(ctx context.Context, p *ListProductsCandlesPa
 		}
 		c.addStringParam(queryParams, "granularity", interval_str)
 	}
+
+	if p.Cursor != nil {
+		c.addStringParam(queryParams, "cursor", *p.Cursor)
+	}
+
+	err := c.GetAndDecode(ctx, *u, &response, &headersMap, &queryParams)
+	if err != nil {
+		return nil, err
+	}
+	return &response, err
+}
+
+type GetProductBookParams struct {
+	Product string
+	Limit   int32
+	Cursor  *string
+}
+
+func (c *Client) GetProductBook(ctx context.Context, p *GetProductBookParams) (*model.GetProductBookResponse, error) {
+	if p == nil || len(p.Product) == 0 {
+		return nil, errors.New("no product sent to /product_book request")
+	}
+
+	var (
+		u, _        = url.Parse(CoinbaseAdvV3endpoint + fmt.Sprintf("/brokerage/product_book"))
+		response    model.GetProductBookResponse
+		headersMap  = make(map[string]string)
+		queryParams = make(map[string]string)
+	)
+
+	if p.Product != "" {
+		c.addStringParam(queryParams, "product_id", p.Product)
+	}
+
+	if p.Limit > 0 {
+		c.addInt32Param(queryParams, "limit", p.Limit)
+	} else {
+		c.addInt32Param(queryParams, "limit", MaxLimit)
+	}
+
 	if p.Cursor != nil {
 		c.addStringParam(queryParams, "cursor", *p.Cursor)
 	}

@@ -18,6 +18,7 @@ type CoinbaseClient interface {
 	CreateOrder(ctx context.Context, p *model.CreateOrderRequest) (*model.CreateOrderResponse, error)
 	ListOrders(ctx context.Context, p *ListOrdersParams) (*model.ListOrdersResponse, error)
 	GetPrice(ctx context.Context, currency string, side string) (*float64, error)
+	GetProductBook(ctx context.Context, p *GetProductBookParams) (*model.GetProductBookResponse, error)
 	GetQuote(ctx context.Context, currency string) (*Quote, error)
 	GetExchangeRate(ctx context.Context, currency string) (*model.GetExchangeRateResponseData, error)
 	GetProduct(ctx context.Context, productId string) (*model.GetProductResponse, error)

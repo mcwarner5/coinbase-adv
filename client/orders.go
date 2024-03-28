@@ -13,6 +13,7 @@ import (
 
 const (
 	DefaultLimit = 50
+	MaxLimit     = 300
 	BatchLimit   = 1000
 )
 
